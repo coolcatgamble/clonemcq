@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Link from 'next/link'
+import Link from "next/link";
 import "./globals.css";
 import { Container } from "@/components/ui";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Qwiz Master (MVP)",
@@ -11,14 +14,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900">
+      <body className={`${inter.variable} min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900`}>
         <header className="border-b bg-white/70 backdrop-blur">
           <Container>
             <div className="flex h-14 items-center justify-between">
-              <a href="/" className="font-semibold">Classroom MCQ</a>
+              <Link href="/" className="font-semibold">
+                Classroom MCQ
+              </Link>
               <nav className="flex gap-4 text-sm">
-                <a className="text-gray-600 hover:text-gray-900" href="/lecturer">Lecturer</a>
-                <a className="text-gray-600 hover:text-gray-900" href="/student">Student</a>
+                <Link className="text-gray-600 hover:text-gray-900" href="/lecturer">
+                  Lecturer
+                </Link>
+                <Link className="text-gray-600 hover:text-gray-900" href="/student">
+                  Student
+                </Link>
               </nav>
             </div>
           </Container>
